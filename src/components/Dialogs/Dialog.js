@@ -3,6 +3,12 @@ import "./Dialogs.css";
 import { NavLink } from "react-router-dom";
 
 function Dialog(props) {
+  let lastMessage = "No messages";
+  let lastMessageDate = "";
+  if (props.lastMessage) {
+    lastMessage = props.lastMessage.message;
+    lastMessageDate = props.lastMessage.date;
+  }
   return (
     <NavLink to={"/" + props.id} className="dialogs-list-item">
       <div className="dialogs-list-item__photo">
@@ -10,12 +16,10 @@ function Dialog(props) {
       </div>
       <div className="dialogs-list-item__name">
         {props.fullName} <br />{" "}
-        <span className="dialogs-list-item__last-message">
-          TODO last message
-        </span>
+        <span className="dialogs-list-item__last-message">{lastMessage}</span>
       </div>
 
-      <div className="dialogs-list-item__date">TODO date</div>
+      <div className="dialogs-list-item__date">{lastMessageDate}</div>
     </NavLink>
   );
 }
